@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login / Sign Up</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/aos.css">
+<link rel="stylesheet" href="css/bootstrap-datepicker.css">
+<link rel="stylesheet" href="css/jquery-ui.css">
+<link rel="stylesheet" href="css/jquery.fancybox.min.css">
+<link rel="stylesheet" href="css/magnific-popup.css">
+<link rel="stylesheet" href="css/mediaelementplayer.css">
+<link rel="stylesheet" href="css/owl.carousel.min.css">
+<link rel="stylesheet" href="css/owl.theme.default.min.css">
+<link rel="stylesheet" href="fonts/flaticon/font/flaticon.css">
+<link rel="stylesheet" href="fonts/icomoon/style.css">
+    <style>
+      body {
+        background-color: #f8f9fa;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        font-family: 'Poppins', sans-serif;
+      }
+      .auth-container {
+        background: white;
+        padding: 30px;
+        border-radius: 10px;
+        box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+        width: 100%;
+        max-width: 400px;
+      }
+      .auth-container h2 {
+        margin-bottom: 20px;
+        text-align: center;
+      }
+      .form-group {
+        margin-bottom: 15px;
+      }
+      .btn-primary {
+        width: 100%;
+      }
+      .toggle-link {
+        display: block;
+        text-align: center;
+        margin-top: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="auth-container">
+      <h2 id="form-title">Login</h2>
+      <form id="auth-form">
+        <div class="form-group">
+          <input type="email" class="form-control" placeholder="Email" required />
+        </div>
+        <div class="form-group">
+          <input type="password" class="form-control" placeholder="Password" required />
+        </div>
+        <button type="submit" class="btn btn-primary">Login</button>
+        <a href="#" class="toggle-link" onclick="toggleForm(event)">Don't have an account? Sign Up</a>
+      </form>
+    </div>
+
+    <script>
+      function toggleForm(event) {
+        event.preventDefault();
+        const title = document.getElementById('form-title');
+        const form = document.getElementById('auth-form');
+        const isLogin = title.innerText === 'Login';
+
+        title.innerText = isLogin ? 'Sign Up' : 'Login';
+        form.innerHTML = isLogin
+          ? `<div class="form-group">
+              <input type="text" class="form-control" placeholder="Full Name" required />
+            </div>
+            <div class="form-group">
+              <input type="email" class="form-control" placeholder="Email" required />
+            </div>
+            <div class="form-group">
+              <input type="password" class="form-control" placeholder="Password" required />
+            </div>
+            <button type="submit" class="btn btn-primary">Sign Up</button>
+            <a href="#" class="toggle-link" onclick="toggleForm(event)">Already have an account? Login</a>`
+          : `<div class="form-group">
+              <input type="email" class="form-control" placeholder="Email" required />
+            </div>
+            <div class="form-group">
+              <input type="password" class="form-control" placeholder="Password" required />
+            </div>
+            <button type="submit" class="btn btn-primary">Login</button>
+            <a href="#" class="toggle-link" onclick="toggleForm(event)">Don't have an account? Sign Up</a>`;
+      }
+    </script>
+  </body>
+</html>
