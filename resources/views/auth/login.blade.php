@@ -1,47 +1,89 @@
-<x-guest-layout>
-    <!-- Session Status -->
-    <x-auth-session-status class="mb-4" :status="session('status')" />
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login / Sign Up</title>
+    
+    <!-- Laravel Mix or Asset CSS -->
+    <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+    <!-- Add other CSS as needed -->
 
-    <form method="POST" action="{{ route('login') }}">
-        @csrf
+    <style>
+      body {
+        background-color: #f8f9fa;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        font-family: 'Poppins', sans-serif;
+      }
+      .auth-container {
+        background: white;
+        padding: 30px;
+        border-radius: 10px;
+        box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+        width: 100%;
+        max-width: 400px;
+      }
+      .auth-container h2 {
+        margin-bottom: 20px;
+        text-align: center;
+      }
+      .form-group {
+        margin-bottom: 15px;
+      }
+      .btn-primary {
+        width: 100%;
+      }
+      .toggle-link {
+        display: block;
+        text-align: center;
+        margin-top: 10px;
+      }
+    </style>
+</head>
+<body>
+    <div class="auth-container">
+        <h2>Login</h2>
 
-        <!-- Email Address -->
-        <div>
-            <x-input-label for="email" :value="__('Email')" />
-            <x-text-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autofocus autocomplete="username" />
-            <x-input-error :messages="$errors->get('email')" class="mt-2" />
-        </div>
+        <!-- Laravel session status message -->
+        @if (session('status'))
+            <div class="alert alert-success">{{ session('status') }}</div>
+        @endif
 
-        <!-- Password -->
-        <div class="mt-4">
-            <x-input-label for="password" :value="__('Password')" />
+        <!-- Laravel validation error messages -->
+        @if ($errors->any())
+            <div class="alert alert-danger">
+                <ul class="mb-0">
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
 
-            <x-text-input id="password" class="block mt-1 w-full"
-                            type="password"
-                            name="password"
-                            required autocomplete="current-password" />
+        <!-- Actual login form -->
+        <form method="POST" action="{{ route('login') }}">
+            @csrf
+            <div class="form-group">
+                <input type="email" name="email" class="form-control" placeholder="Email" value="{{ old('email') }}" required autofocus>
+            </div>
+            <div class="form-group">
+                <input type="password" name="password" class="form-control" placeholder="Password" required>
+            </div>
+            <div class="form-group form-check">
+                <input type="checkbox" name="remember" id="remember_me" class="form-check-input">
+                <label class="form-check-label" for="remember_me">Remember me</label>
+            </div>
+            <button type="submit" class="btn btn-primary">Login</button>
+            <a href="{{ route('register') }}" class="toggle-link">Don't have an account? Sign Up</a>
 
-            <x-input-error :messages="$errors->get('password')" class="mt-2" />
-        </div>
-
-        <!-- Remember Me -->
-        <div class="block mt-4">
-            <label for="remember_me" class="inline-flex items-center">
-                <input id="remember_me" type="checkbox" class="rounded border-gray-300 text-indigo-600 shadow-sm focus:ring-indigo-500" name="remember">
-                <span class="ms-2 text-sm text-gray-600">{{ __('Remember me') }}</span>
-            </label>
-        </div>
-
-        <div class="flex items-center justify-end mt-4">
             @if (Route::has('password.request'))
-                <a class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" href="{{ route('password.request') }}">
-                    {{ __('Forgot your password?') }}
-                </a>
+                <a class="toggle-link" href="{{ route('password.request') }}">Forgot your password?</a>
             @endif
-
-            <x-primary-button class="ms-3">
-                {{ __('Log in') }}
-            </x-primary-button>
-        </div>
-    </form>
-</x-guest-layout>
+        </form>
+    </div>
+</body>
+</html>

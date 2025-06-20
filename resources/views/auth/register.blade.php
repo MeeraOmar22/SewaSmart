@@ -1,52 +1,93 @@
-<x-guest-layout>
-    <form method="POST" action="{{ route('register') }}">
-        @csrf
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login / Sign Up</title>
+    
+    <!-- Laravel Mix or Asset CSS -->
+    <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+    <!-- Add other CSS as needed -->
 
-        <!-- Name -->
-        <div>
-            <x-input-label for="name" :value="__('Name')" />
-            <x-text-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" required autofocus autocomplete="name" />
-            <x-input-error :messages="$errors->get('name')" class="mt-2" />
-        </div>
+    <style>
+      body {
+        background-color: #f8f9fa;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        font-family: 'Poppins', sans-serif;
+      }
+      .auth-container {
+        background: white;
+        padding: 30px;
+        border-radius: 10px;
+        box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+        width: 100%;
+        max-width: 400px;
+      }
+      .auth-container h2 {
+        margin-bottom: 20px;
+        text-align: center;
+      }
+      .form-group {
+        margin-bottom: 15px;
+      }
+      .btn-primary {
+        width: 100%;
+      }
+      .toggle-link {
+        display: block;
+        text-align: center;
+        margin-top: 10px;
+      }
+    </style>
+</head>
+<div class="auth-container">
+  <h2>Register an Account</h2>
 
-        <!-- Email Address -->
-        <div class="mt-4">
-            <x-input-label for="email" :value="__('Email')" />
-            <x-text-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autocomplete="username" />
-            <x-input-error :messages="$errors->get('email')" class="mt-2" />
-        </div>
+  <!-- Laravel error display -->
+  @if ($errors->any())
+      <div class="alert alert-danger">
+          <ul class="mb-0">
+              @foreach ($errors->all() as $error)
+                  <li>{{ $error }}</li>
+              @endforeach
+          </ul>
+      </div>
+  @endif
 
-        <!-- Password -->
-        <div class="mt-4">
-            <x-input-label for="password" :value="__('Password')" />
+  <form method="POST" action="{{ route('register') }}">
+    @csrf
 
-            <x-text-input id="password" class="block mt-1 w-full"
-                            type="password"
-                            name="password"
-                            required autocomplete="new-password" />
+    <!-- Name -->
+    <div class="form-group">
+      <input type="text" class="form-control" name="name" placeholder="Full Name"
+             value="{{ old('name') }}" required autofocus autocomplete="name">
+    </div>
 
-            <x-input-error :messages="$errors->get('password')" class="mt-2" />
-        </div>
+    <!-- Email Address -->
+    <div class="form-group">
+      <input type="email" class="form-control" name="email" placeholder="Email"
+             value="{{ old('email') }}" required autocomplete="username">
+    </div>
 
-        <!-- Confirm Password -->
-        <div class="mt-4">
-            <x-input-label for="password_confirmation" :value="__('Confirm Password')" />
+    <!-- Password -->
+    <div class="form-group">
+      <input type="password" class="form-control" name="password" placeholder="Password"
+             required autocomplete="new-password">
+    </div>
 
-            <x-text-input id="password_confirmation" class="block mt-1 w-full"
-                            type="password"
-                            name="password_confirmation" required autocomplete="new-password" />
+    <!-- Confirm Password -->
+    <div class="form-group">
+      <input type="password" class="form-control" name="password_confirmation"
+             placeholder="Confirm Password" required autocomplete="new-password">
+    </div>
 
-            <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" />
-        </div>
+    <button type="submit" class="btn btn-primary">Register</button>
 
-        <div class="flex items-center justify-end mt-4">
-            <a class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" href="{{ route('login') }}">
-                {{ __('Already registered?') }}
-            </a>
-
-            <x-primary-button class="ms-4">
-                {{ __('Register') }}
-            </x-primary-button>
-        </div>
-    </form>
-</x-guest-layout>
+    <a href="{{ route('login') }}" class="toggle-link">Already have an account? Login</a>
+  </form>
+</div>
+</html>
