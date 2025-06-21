@@ -8,24 +8,47 @@
         <title>{{ config('app.name', 'Laravel') }}</title>
 
         <!-- Fonts -->
-        <link rel="preconnect" href="https://fonts.bunny.net">
-        <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
+        <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700;900&display=swap" rel="stylesheet">
+
+        <!-- Icons and Fonts -->
+        <link rel="stylesheet" href="{{ asset('fonts/icomoon/style.css') }}">
+        <link rel="stylesheet" href="{{ asset('fonts/flaticon/font/flaticon.css') }}">
 
         <!-- Scripts -->
         @vite(['resources/css/app.css', 'resources/js/app.js'])
+        <!-- Vendor CSS -->
+        <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
+        <link rel="stylesheet" href="{{ asset('css/bootstrap-datepicker.css') }}">
+        <link rel="stylesheet" href="{{ asset('css/jquery.fancybox.min.css') }}">
+        <link rel="stylesheet" href="{{ asset('css/owl.carousel.min.css') }}">
+        <link rel="stylesheet" href="{{ asset('css/owl.theme.default.min.css') }}">
+        <link rel="stylesheet" href="{{ asset('css/aos.css') }}">
+
+        <!-- Your Main CSS -->
+        <link rel="stylesheet" href="{{ asset('css/style.css') }}">
     </head>
-    <body class="font-sans antialiased">
-        <div class="min-h-screen bg-gray-100">
-            @include('layouts.navigation')
+    <body>
+       <div class="site-wrap" id="home-section">
 
             <!-- Page Heading -->
-            @isset($header)
-                <header class="bg-white shadow">
-                    <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
-                        {{ $header }}
-                    </div>
+                <header class="site-navbar site-navbar-target" role="banner">
+                    @include('layouts.navigation')
                 </header>
-            @endisset
+
+                <div class="site-section">
+                    <div class="container"> 
+                        @isset($header)
+                        <div class="row align-items-center justify-content-center">
+                            <div class="row mb-5">
+                                <div class="col-lg-7">
+                                <h1>{{ $header }}</h1>
+                                </div>
+                            </div>
+                        </div>
+                        @endisset
+                    </div>
+                </div>
+
 
             <!-- Page Content -->
             <main>

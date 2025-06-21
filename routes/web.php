@@ -9,7 +9,7 @@ Route::get('/', function () {
 
 Route::get('/listing',function(){
     return view('listing');
-});
+})->name('listing');
 
 Route::get('/about',function(){
     return view('about');
