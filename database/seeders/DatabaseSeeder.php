@@ -11,13 +11,20 @@ class DatabaseSeeder extends Seeder
     /**
      * Seed the application's database.
      */
-    public function run(): void
+    public function run()
     {
-        // User::factory(10)->create();
-
-        User::factory()->create([
-            'name' => 'Test User',
-            'email' => 'test@example.com',
+        if (!User::where('email', 'test@example.com')->exists()) {
+            User::create([
+                'name' => 'Test User',
+                'email' => 'test@example.com',
+                'email_verified_at' => now(),
+                'password' => bcrypt('password'), // default password
+                'remember_token' => Str::random(10),
+            ]);
+        }
+        $this->call([
+            CarSeeder::class,
+            // Add other seeders here as needed
         ]);
     }
 }

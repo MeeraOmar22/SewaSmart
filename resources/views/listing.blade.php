@@ -55,11 +55,6 @@
           </div>
         </div>
       </div>
-  
-
-
-
-      
 
     <div class="site-section bg-light">
       <div class="container">
@@ -70,215 +65,70 @@
           </div>
         </div>
         
+        <form action="{{ route('cars.listings') }}" method="GET" class="mb-5">
+          <div class="form-row">
+            <div class="form-group col-md-3">
+              <select name="car_brand" class="form-control">
+                <option value="">Any Brand</option>
+                @foreach($brands as $brand)
+                  <option value="{{ $brand }}" {{ request('car_brand') == $brand ? 'selected' : '' }}>{{ $brand }}</option>
+                @endforeach
+              </select>
+            </div>
+            <div class="form-group col-md-3">
+              <select name="transmission_type" class="form-control">
+                <option value="">Any Transmission</option>
+                @foreach($transmissions as $trans)
+                  <option value="{{ $trans }}" {{ request('transmission_type') == $trans ? 'selected' : '' }}>{{ $trans }}</option>
+                @endforeach
+              </select>
+            </div>
+            <div class="form-group col-md-2">
+              <input type="number" name="price_min" class="form-control" placeholder="Min Price">
+            </div>
+            <div class="form-group col-md-2">
+              <input type="number" name="price_max" class="form-control" placeholder="Max Price">
+            </div>
+            <div class="form-group col-md-2">
+              <button type="submit" class="btn btn-primary btn-block">Filter</button>
+            </div>
+          </div>
+        </form>
 
         <div class="row">
-          <div class="col-md-6 col-lg-4 mb-4">
-
-            <div class="listing d-block  align-items-stretch">
-              <div class="listing-img h-100 mr-4">
-                <img src="images/car_6.jpg" alt="Image" class="img-fluid">
-              </div>
-              <div class="listing-contents h-100">
-                <h3>Mitsubishi Pajero</h3>
-                <div class="rent-price">
-                  <strong>$389.00</strong><span class="mx-1">/</span>day
+          @forelse($cars as $car)
+            <div class="col-md-6 col-lg-4 mb-4">
+              <div class="listing d-block align-items-stretch">
+                <div class="listing-img h-100 mr-4">
+                  <img src="{{ asset('images/car_placeholder.jpg') }}" alt="{{ $car->model }}" class="img-fluid">
                 </div>
-                <div class="d-block d-md-flex mb-3 border-bottom pb-3">
-                  <div class="listing-feature pr-4">
-                    <span class="caption">Luggage:</span>
-                    <span class="number">8</span>
+                <div class="listing-contents h-100">
+                  <h3>{{ $car->brand }} {{ $car->model }}</h3>
+                  <div class="rent-price">
+                    <strong>RM {{ number_format($car->price, 2) }}</strong><span class="mx-1">/</span>day
                   </div>
-                  <div class="listing-feature pr-4">
-                    <span class="caption">Doors:</span>
-                    <span class="number">4</span>
+                  <div class="d-block d-md-flex mb-3 border-bottom pb-3">
+                    <div class="listing-feature pr-4">
+                      <span class="caption">Transmission:</span>
+                      <span class="number">{{ $car->transmission_type }}</span>
+                    </div>
+                    <div class="listing-feature pr-4">
+                      <span class="caption">Fuel:</span>
+                      <span class="number">{{ $car->fuel_type }}</span>
+                    </div>
                   </div>
-                  <div class="listing-feature pr-4">
-                    <span class="caption">Passenger:</span>
-                    <span class="number">4</span>
+                  <div>
+                    <p>This car is {{ $car->availability ? 'Available' : 'Not Available' }}</p>
+                    <p><a href="#" class="btn btn-primary btn-sm">Rent Now</a></p>
                   </div>
-                </div>
-                <div>
-                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quos eos at eum, voluptatem quibusdam.</p>
-                  <p><a href="#" class="btn btn-primary btn-sm">Rent Now</a></p>
                 </div>
               </div>
-
             </div>
-          </div>
-
-          <div class="col-md-6 col-lg-4 mb-4">
-
-            <div class="listing d-block  align-items-stretch">
-              <div class="listing-img h-100 mr-4">
-                <img src="images/car_5.jpg" alt="Image" class="img-fluid">
-              </div>
-              <div class="listing-contents h-100">
-                <h3>Nissan Moco</h3>
-                <div class="rent-price">
-                  <strong>$389.00</strong><span class="mx-1">/</span>day
-                </div>
-                <div class="d-block d-md-flex mb-3 border-bottom pb-3">
-                  <div class="listing-feature pr-4">
-                    <span class="caption">Luggage:</span>
-                    <span class="number">8</span>
-                  </div>
-                  <div class="listing-feature pr-4">
-                    <span class="caption">Doors:</span>
-                    <span class="number">4</span>
-                  </div>
-                  <div class="listing-feature pr-4">
-                    <span class="caption">Passenger:</span>
-                    <span class="number">4</span>
-                  </div>
-                </div>
-                <div>
-                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quos eos at eum, voluptatem quibusdam.</p>
-                  <p><a href="#" class="btn btn-primary btn-sm">Rent Now</a></p>
-                </div>
-              </div>
-
-            </div>
-          </div>
-          
-
-          <div class="col-md-6 col-lg-4 mb-4">
-
-            <div class="listing d-block  align-items-stretch">
-              <div class="listing-img h-100 mr-4">
-                <img src="images/car_4.jpg" alt="Image" class="img-fluid">
-              </div>
-              <div class="listing-contents h-100">
-                <h3>Honda Fitta</h3>
-                <div class="rent-price">
-                  <strong>$389.00</strong><span class="mx-1">/</span>day
-                </div>
-                <div class="d-block d-md-flex mb-3 border-bottom pb-3">
-                  <div class="listing-feature pr-4">
-                    <span class="caption">Luggage:</span>
-                    <span class="number">8</span>
-                  </div>
-                  <div class="listing-feature pr-4">
-                    <span class="caption">Doors:</span>
-                    <span class="number">4</span>
-                  </div>
-                  <div class="listing-feature pr-4">
-                    <span class="caption">Passenger:</span>
-                    <span class="number">4</span>
-                  </div>
-                </div>
-                <div>
-                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quos eos at eum, voluptatem quibusdam.</p>
-                  <p><a href="#" class="btn btn-primary btn-sm">Rent Now</a></p>
-                </div>
-              </div>
-
-            </div>
-          </div>
-
-          <div class="col-md-6 col-lg-4 mb-4">
-
-            <div class="listing d-block  align-items-stretch">
-              <div class="listing-img h-100 mr-4">
-                <img src="images/car_3.jpg" alt="Image" class="img-fluid">
-              </div>
-              <div class="listing-contents h-100">
-                <h3>Skoda Laura</h3>
-                <div class="rent-price">
-                  <strong>$389.00</strong><span class="mx-1">/</span>day
-                </div>
-                <div class="d-block d-md-flex mb-3 border-bottom pb-3">
-                  <div class="listing-feature pr-4">
-                    <span class="caption">Luggage:</span>
-                    <span class="number">8</span>
-                  </div>
-                  <div class="listing-feature pr-4">
-                    <span class="caption">Doors:</span>
-                    <span class="number">4</span>
-                  </div>
-                  <div class="listing-feature pr-4">
-                    <span class="caption">Passenger:</span>
-                    <span class="number">4</span>
-                  </div>
-                </div>
-                <div>
-                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quos eos at eum, voluptatem quibusdam.</p>
-                  <p><a href="#" class="btn btn-primary btn-sm">Rent Now</a></p>
-                </div>
-              </div>
-
-            </div>
-          </div>
-
-          <div class="col-md-6 col-lg-4 mb-4">
-
-            <div class="listing d-block  align-items-stretch">
-              <div class="listing-img h-100 mr-4">
-                <img src="images/car_2.jpg" alt="Image" class="img-fluid">
-              </div>
-              <div class="listing-contents h-100">
-                <h3>Mazda LaPuta</h3>
-                <div class="rent-price">
-                  <strong>$389.00</strong><span class="mx-1">/</span>day
-                </div>
-                <div class="d-block d-md-flex mb-3 border-bottom pb-3">
-                  <div class="listing-feature pr-4">
-                    <span class="caption">Luggage:</span>
-                    <span class="number">8</span>
-                  </div>
-                  <div class="listing-feature pr-4">
-                    <span class="caption">Doors:</span>
-                    <span class="number">4</span>
-                  </div>
-                  <div class="listing-feature pr-4">
-                    <span class="caption">Passenger:</span>
-                    <span class="number">4</span>
-                  </div>
-                </div>
-                <div>
-                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quos eos at eum, voluptatem quibusdam.</p>
-                  <p><a href="#" class="btn btn-primary btn-sm">Rent Now</a></p>
-                </div>
-              </div>
-
-            </div>
-          </div>
-          
-
-          <div class="col-md-6 col-lg-4 mb-4">
-
-            <div class="listing d-block  align-items-stretch">
-              <div class="listing-img h-100 mr-4">
-                <img src="images/car_1.jpg" alt="Image" class="img-fluid">
-              </div>
-              <div class="listing-contents h-100">
-                <h3>Buick LaCrosse</h3>
-                <div class="rent-price">
-                  <strong>$389.00</strong><span class="mx-1">/</span>day
-                </div>
-                <div class="d-block d-md-flex mb-3 border-bottom pb-3">
-                  <div class="listing-feature pr-4">
-                    <span class="caption">Luggage:</span>
-                    <span class="number">8</span>
-                  </div>
-                  <div class="listing-feature pr-4">
-                    <span class="caption">Doors:</span>
-                    <span class="number">4</span>
-                  </div>
-                  <div class="listing-feature pr-4">
-                    <span class="caption">Passenger:</span>
-                    <span class="number">4</span>
-                  </div>
-                </div>
-                <div>
-                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quos eos at eum, voluptatem quibusdam.</p>
-                  <p><a href="#" class="btn btn-primary btn-sm">Rent Now</a></p>
-                </div>
-              </div>
-
-            </div>
-          </div>
-
+          @empty
+            <p class="text-center">No cars found matching your filters.</p>
+          @endforelse
         </div>
+
         <div class="row">
           <div class="col-5">
             <div class="custom-pagination">

@@ -21,7 +21,7 @@
                             <nav class="site-navigation d-none d-lg-block mr-3" role="navigation">
                                 <ul class="site-menu main-menu js-clone-nav ml-auto">
                                     <li class="{{ request()->is('/') ? 'active' : '' }}"><a href="{{ url('/') }}" class="nav-link">Home</a></li>
-                                    <li><a href="{{ url('/listing') }}" class="nav-link">Listing</a></li>
+                                    <li><a href="{{ url('/cars') }}" class="nav-link">Listing</a></li>
                                     <li><a href="{{ url('/about') }}" class="nav-link">About</a></li>
                                     <li><a href="{{ url('/contact') }}" class="nav-link">Contact</a></li>
                                 </ul>

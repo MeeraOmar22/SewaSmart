@@ -23,8 +23,8 @@
                         <li class="{{ request()->routeIs('dashboard') ? 'active' : '' }}">
                             <a href="{{ route('dashboard') }}" class="nav-link">Dashboard</a>
                         </li>
-                        <li class="{{ request()->routeIs('listing') ? 'active' : '' }}">
-                            <a href="{{ route('listing') }}" class="nav-link">Listing</a>
+                        <li class="{{ request()->routeIs('cars.listings') ? 'active' : '' }}">
+                            <a href="{{ route('cars.listings') }}" class="nav-link">Listing</a>
                         </li>
                         <li class="{{ request()->routeIs('profile.edit') ? 'active' : '' }}">
                             <a href="{{ route('profile.edit') }}" class="nav-link">Profile</a>
