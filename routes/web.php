@@ -31,6 +31,8 @@ Route::get('/dashboard', [DashboardController::class, 'index'])
 ->middleware(['auth', 'verified'])
 ->name('dashboard');
 
+Route::post('/booking/create', [BookingController::class, 'store'])->name('booking.create');
+
 Route::post('/booking/return/{id}', [DashboardController::class, 'returnCar'])->name('booking.return');
 
 Route::post('/booking/cancel/{id}', [DashboardController::class, 'cancelBooking'])->name('booking.cancel');
