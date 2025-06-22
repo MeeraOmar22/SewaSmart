@@ -66,7 +66,7 @@
         <div class="row justify-content-center text-center">
         <div class="col-7 text-center mb-5">
           <h2>Contact Us Or Use This Form To Rent A Car</h2>
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nemo assumenda, dolorum necessitatibus eius earum voluptates sed!</p>
+          <p>Don't hesitate this smart act!</p>
         </div>
       </div>
         <div class="row">
@@ -105,9 +105,9 @@
               <ul class="list-unstyled footer-link">
                 <li class="d-block mb-3">
                   <span class="d-block text-black">Address:</span>
-                  <span>34 Street Name, City Name Here, United States</span></li>
-                <li class="d-block mb-3"><span class="d-block text-black">Phone:</span><span>+1 242 4942 290</span></li>
-                <li class="d-block mb-3"><span class="d-block text-black">Email:</span><span>info@yourdomain.com</span></li>
+                  <span>Universiti Malaya, 50603 Kuala Lumpur, Wilayah Persekutuan Kuala Lumpur</span></li>
+                <li class="d-block mb-3"><span class="d-block text-black">Phone:</span><span> 03-7967 3502</span></li>
+                <li class="d-block mb-3"><span class="d-block text-black">Email:</span><span> corporate@um.edu.my.</span></li>
               </ul>
             </div>
           </div>

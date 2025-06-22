@@ -66,9 +66,9 @@
             <img src="images/hero_2.jpg" alt="Image" class="img-fluid rounded">
           </div>
           <div class="col-lg-4 mr-auto">
-            <h2>Car Company</h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odit suscipit, repudiandae similique accusantium eius nulla quam laudantium sequi.</p>
-            <p>Debitis voluptates corporis saepe molestias tenetur ab quae, quo earum commodi, laborum dolore, fuga aliquid delectus cum ipsa?</p>
+            <h2>ABOUT SEWASMART</h2>
+            <h5>Why own when you can rent!</h5>
+            <p>SewaSmart is a car rental website that provides a number of car selection at a reasonable price. Consider travelling to places without needing to use any public transport, pick SewaSmart</p>
           </div>
         </div>
       </div>
@@ -83,90 +83,27 @@
         </div>
         <div class="row align-items-stretch">
 
-          <div class="col-lg-4 col-md-6 mb-5">
+          <div class="col-lg-6 col-md-6 mb-5">
             <div class="post-entry-1 h-100 person-1">
               
-                <img src="images/person_1.jpg" alt="Image"
-                 class="img-fluid">
             
               <div class="post-entry-1-contents">
                 <span class="meta">Founder</span>
-                <h2>James Doe</h2>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsa, sapiente.</p>
+                <h2>AMEERA BINTI OMAR</h2>
+                <p>Matric No: U2101228</p>
               </div>
             </div>
           </div>
-          <div class="col-lg-4 col-md-6 mb-5">
+          <div class="col-lg-6 col-md-6 mb-5">
             <div class="post-entry-1 h-100 person-1">
-              
-                <img src="images/person_2.jpg" alt="Image"
-                 class="img-fluid">
             
               <div class="post-entry-1-contents">
                 <span class="meta">Founder</span>
-                <h2>James Doe</h2>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsa, sapiente.</p>
+                <h2>Tang Yuen Yin</h2>
+                <p>Matric No: 22004775</p>
               </div>
             </div>
           </div>
-
-          <div class="col-lg-4 col-md-6 mb-5">
-            <div class="post-entry-1 h-100 person-1">
-              
-                <img src="images/person_3.jpg" alt="Image"
-                 class="img-fluid">
-            
-              <div class="post-entry-1-contents">
-                <span class="meta">Founder</span>
-                <h2>James Doe</h2>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsa, sapiente.</p>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6 mb-5">
-            <div class="post-entry-1 h-100 person-1">
-              
-                <img src="images/person_4.jpg" alt="Image"
-                 class="img-fluid">
-            
-              <div class="post-entry-1-contents">
-                <span class="meta">Founder</span>
-                <h2>James Doe</h2>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsa, sapiente.</p>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6 mb-5">
-            <div class="post-entry-1 h-100 person-1">
-              
-                <img src="images/person_5.jpg" alt="Image"
-                 class="img-fluid">
-            
-              <div class="post-entry-1-contents">
-                <span class="meta">Founder</span>
-                <h2>James Doe</h2>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsa, sapiente.</p>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6 mb-5">
-            <div class="post-entry-1 h-100 person-1">
-              
-                <img src="images/person_1.jpg" alt="Image"
-                 class="img-fluid">
-            
-              <div class="post-entry-1-contents">
-                <span class="meta">Founder</span>
-                <h2>James Doe</h2>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsa, sapiente.</p>
-              </div>
-            </div>
-          </div>
-
-
         </div>
       </div>
     </div>
@@ -179,8 +116,8 @@
           </div>
           <div class="col-lg-4 ml-auto">
             <h2>Our History</h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odit suscipit, repudiandae similique accusantium eius nulla quam laudantium sequi.</p>
-            <p>Debitis voluptates corporis saepe molestias tenetur ab quae, quo earum commodi, laborum dolore, fuga aliquid delectus cum ipsa?</p>
+            <p>This website is created for WIE2002 Open Source Porgramming Assignment 2</p>
+            <p>It includes function such as the booking a car and managing their bookings.</p>
           </div>
         </div>
       </div>
@@ -192,7 +129,7 @@
         <div class="row align-items-center">
           <div class="col-lg-7 mb-4 mb-md-0">
             <h2 class="mb-0 text-white">What are you waiting for?</h2>
-            <p class="mb-0 opa-7">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Obcaecati, laboriosam.</p>
+            <p class="mb-0 opa-7">Rent A Car Now with SewaSmart!</p>
           </div>
           <div class="col-lg-5 text-md-right">
             <a href={{ url('/listing') }} class="btn btn-primary btn-white">Rent a car now</a>
