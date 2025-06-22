@@ -23,37 +23,55 @@
         <link rel="stylesheet" href="{{ asset('css/owl.carousel.min.css') }}">
         <link rel="stylesheet" href="{{ asset('css/owl.theme.default.min.css') }}">
         <link rel="stylesheet" href="{{ asset('css/aos.css') }}">
+        
 
         <!-- Your Main CSS -->
         <link rel="stylesheet" href="{{ asset('css/style.css') }}">
     </head>
     <body>
        <div class="site-wrap" id="home-section">
-
             <!-- Page Heading -->
                 <header class="site-navbar site-navbar-target" role="banner">
                     @include('layouts.navigation')
                 </header>
 
-                <div class="site-section">
-                    <div class="container"> 
-                        @isset($header)
-                        <div class="row align-items-center justify-content-center">
-                            <div class="row mb-5">
-                                <div class="col-lg-7">
-                                <h1>{{ $header }}</h1>
-                                </div>
-                            </div>
+                <div class="hero inner-page" style="background-image: url('images/hero_1_a.jpg');">
+                    <div class="container">
+                    <div class="row align-items-center ">
+                        <div class="col-lg-5">
+                        <div class="intro">
+                            @isset($header)
+                            <h1><strong>{{ $header }}</strong></h1>
+                            @endisset
                         </div>
-                        @endisset
+                        </div>
+                    </div>
                     </div>
                 </div>
 
-
             <!-- Page Content -->
-            <main>
-                {{ $slot }}
-            </main>
+            <div class="site-section bg-light">
+                <main>
+                    {{ $slot }}
+                </main>
+            </div>
         </div>
+
+        <script src="{{ asset('js/jquery-3.3.1.min.js') }}"></script>
+        <script src="{{ asset('js/popper.min.js') }}"></script>
+        <!-- <script src="{{ asset('js/bootstrap.min.js') }}"></script> -->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+        <script src="{{ asset('js/owl.carousel.min.js') }}"></script>
+        <script src="{{ asset('js/jquery.sticky.js') }}"></script>
+        <script src="{{ asset('js/jquery.waypoints.min.js') }}"></script>
+        <script src="{{ asset('js/jquery.animateNumber.min.js') }}"></script>
+        <script src="{{ asset('js/jquery.fancybox.min.js') }}"></script>
+        <script src="{{ asset('js/jquery.easing.1.3.js') }}"></script>
+        <script src="{{ asset('js/bootstrap-datepicker.min.js') }}"></script>
+        <script src="{{ asset('js/aos.js') }}"></script>
+
+
+        <script src="{{ asset('js/main.js') }}"></script>
+
     </body>
 </html>

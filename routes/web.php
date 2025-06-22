@@ -1,8 +1,9 @@
 <?php
 
-use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\CarController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\CarController;
+use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\DashboardController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -17,9 +18,17 @@ Route::get('/contact',function(){
     return view('contact');
 });
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+Route::get('/dashboard', [DashboardController::class, 'index'])
+->middleware(['auth', 'verified'])
+->name('dashboard');
+
+Route::post('/booking/return/{id}', [DashboardController::class, 'returnCar'])->name('booking.return');
+
+Route::post('/booking/cancel/{id}', [DashboardController::class, 'cancelBooking'])->name('booking.cancel');
+
+Route::put('/booking/update/{id}', [DashboardController::class, 'updateBooking'])->name('booking.update');
+
+Route::post('/booking/feedback/{id}', [DashboardController::class, 'submitFeedback'])->name('booking.feedback');
 
 Route::get('/cars', [CarController::class, 'index'])->name('cars.listings');
 

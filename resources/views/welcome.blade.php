@@ -567,7 +567,8 @@
 
         <script src="{{ asset('js/jquery-3.3.1.min.js') }}"></script>
         <script src="{{ asset('js/popper.min.js') }}"></script>
-        <script src="{{ asset('js/bootstrap.min.js') }}"></script>
+        <!-- <script src="{{ asset('js/bootstrap.min.js') }}"></script> -->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
         <script src="{{ asset('js/owl.carousel.min.js') }}"></script>
         <script src="{{ asset('js/jquery.sticky.js') }}"></script>
         <script src="{{ asset('js/jquery.waypoints.min.js') }}"></script>

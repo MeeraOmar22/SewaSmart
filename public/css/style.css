@@ -1761,3 +1761,12 @@ h1, h2, h3, h4, h5,
   .listing p {
     color: #888;
     font-size: 14px; }
+
+  .booking{
+    background-color: white;
+    box-shadow: #000;
+    border-radius: 7px;
+    margin:15px;
+    padding: 10px 10px;
+    height:300px;
+  }
