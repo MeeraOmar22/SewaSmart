@@ -119,7 +119,7 @@
                   </div>
                   <div>
                     <p>This car is {{ $car->availability ? 'Available' : 'Not Available' }}</p>
-                    <p><a href="#" class="btn btn-primary btn-sm">Rent Now</a></p>
+                    <p><a href="{{ route('booking', ['id' => $car->id]) }}" class="btn btn-primary btn-sm">Rent Now</a></p>
                   </div>
                 </div>
               </div>

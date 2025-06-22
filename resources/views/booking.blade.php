@@ -1,0 +1,1 @@
+<a href="{{ route('payment', ['id' => $car->id,'start_date'=>'2025-7-22','end_date'=>'2025-7-25','price'=>100.00]) }}">Payment</a>

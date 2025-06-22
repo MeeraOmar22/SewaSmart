@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\BookingController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CarController;
 use App\Http\Controllers\ProfileController;
@@ -18,6 +19,14 @@ Route::get('/contact',function(){
     return view('contact');
 });
 
+Route::get('/booking/{id}',[BookingController::class,'getCarDetail'])
+->middleware(['auth', 'verified'])
+->name('booking');
+
+Route::get('/payment',[BookingController::class,'getBookingDetail'])
+->middleware(['auth', 'verified'])
+->name('payment');
+
 Route::get('/dashboard', [DashboardController::class, 'index'])
 ->middleware(['auth', 'verified'])
 ->name('dashboard');
@@ -31,6 +40,7 @@ Route::put('/booking/update/{id}', [DashboardController::class, 'updateBooking']
 Route::post('/booking/feedback/{id}', [DashboardController::class, 'submitFeedback'])->name('booking.feedback');
 
 Route::get('/cars', [CarController::class, 'index'])->name('cars.listings');
+
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
