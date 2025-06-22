@@ -559,10 +559,10 @@
         </div>
     @if (session('open_modal'))
         <script>
-            window.ddEventListener('load', function () {
+            window.addEventListener('load', function () {
                 var modalId = '#verifyModal{{ session('open_modal') }}';
-                var myModal = new bootstrap.Modal(document.querySelector(modalId));
-                myModal.show();
+                var verifyModal = new bootstrap.Modal(document.querySelector(modalId));
+                verifyModal.show();
             });
         </script>
         @endif
