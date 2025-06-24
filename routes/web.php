@@ -11,6 +11,10 @@ Route::get('/', function () {
 })->name('home');;
 
 
+Route::get('/', [CarController::class, 'welcome'])
+    ->middleware(['auth', 'verified'])
+    ->name('home');
+
 Route::get('/about',function(){
     return view('about');
 });
@@ -31,7 +35,10 @@ Route::get('/dashboard', [DashboardController::class, 'index'])
 ->middleware(['auth', 'verified'])
 ->name('dashboard');
 
-Route::post('/booking/create', [BookingController::class, 'store'])->name('booking.create');
+Route::post('/booking/create', [BookingController::class, 'store'])
+     ->name('booking.create')
+     ->middleware(['auth','verified']);
+
 
 Route::post('/booking/return/{id}', [DashboardController::class, 'returnCar'])->name('booking.return');
 
@@ -42,13 +49,13 @@ Route::put('/booking/update/{id}', [DashboardController::class, 'updateBooking']
 Route::post('/booking/feedback/{id}', [DashboardController::class, 'submitFeedback'])->name('booking.feedback');
 
 Route::get('/cars', [CarController::class, 'index'])->name('cars.listings');
+Route::get('/get-car-options', [CarController::class, 'getCarOptions']);
 
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-    // Route::get('/cars', [CarController::class, 'index'])->name('cars.listings');
 });
 
 require __DIR__.'/auth.php';

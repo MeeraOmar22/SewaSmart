@@ -12,14 +12,19 @@ class BookingSeeder extends Seeder
         Booking::create([
             'user_id' => 1,
             'car_id' => 2,
-            'car_plate'=>'DEE3103',
-            'start_date' => now()->addDays(10)->format('Y-m-d'),
-            'end_date' => now()->addDays(15)->format('Y-m-d'),
+            'car_plate' => 'DEE3103',
+            'start_date' => '2025-07-03',
+            'end_date' => '2025-07-08',
             'status' => 'booked',
             'pic_name' => 'John Doe',
             'contact_no' => '012-3456789',
-            'price'=>200.30,
-            'verification_code'=>rand(100000, 999999),
+            'price' => 200.30,
+            'verification_code' => 149901,
+            'full_name' => 'John Doe', // ← ✅ ADD THIS
+            'email' => 'demo@email.com', // ← ✅ ADD THIS
+            'license_no' => 'ABC123456', // ← ✅ ADD THIS
+            'license_expiry' => '2026-01-01', // ← ✅ Add this too if your DB requires
+             'pickup_location'   => 'Kuching', // ← Add this
         ]);
 
         Booking::create([
@@ -33,6 +38,12 @@ class BookingSeeder extends Seeder
             'contact_no' => '012-3456789',
             'price'=>300.50,
             'verification_code'=>rand(100000, 999999),
+            'full_name' => 'John Doe',
+            'email' => 'demo@email.com',
+            'license_no' => 'ABC123456',
+            'license_expiry' => '2026-01-01',
+            'pickup_location' => 'Penang',
+
 
         ]);
 
@@ -49,6 +60,11 @@ class BookingSeeder extends Seeder
             'rating' => 4,
             'price'=>300.50,
             'verification_code'=>rand(100000, 999999),
+            'full_name' => 'John Doe',
+            'email' => 'demo@email.com',
+            'license_no' => 'ABC123456',
+            'license_expiry' => '2026-01-01',
+            'pickup_location' => 'Penang',
         ]);
 
         Booking::create([
@@ -62,6 +78,11 @@ class BookingSeeder extends Seeder
             'contact_no' => '013-9876543',
             'price'=>300.50,
             'verification_code'=>rand(100000, 999999),
+            'full_name' => 'John Doe',
+            'email' => 'demo@email.com',
+            'license_no' => 'ABC123456',
+            'license_expiry' => '2026-01-01',
+            'pickup_location' => 'Penang',
         ]);
 
         Booking::create([
@@ -75,7 +96,12 @@ class BookingSeeder extends Seeder
             'contact_no' => '013-9876543',
             'price'=>300.50,
             'verification_code'=>rand(100000, 999999),
-            'penalty'=>'150'
+            'penalty'=>'150',
+            'full_name' => 'John Doe',
+            'email' => 'demo@email.com',
+            'license_no' => 'ABC123456',
+            'license_expiry' => '2026-01-01',
+            'pickup_location' => 'Penang',
         ]);
 
         Booking::create([
@@ -89,6 +115,11 @@ class BookingSeeder extends Seeder
             'contact_no' => '013-9876543',
             'price'=>300.50,
             'verification_code'=>rand(100000, 999999),
+            'full_name' => 'John Doe',
+            'email' => 'demo@email.com',
+            'license_no' => 'ABC123456',
+            'license_expiry' => '2026-01-01',
+            'pickup_location' => 'Penang',
         ]);
     }
 }

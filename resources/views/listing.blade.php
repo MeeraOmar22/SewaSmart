@@ -61,66 +61,221 @@
         <div class="row">
           <div class="col-lg-7">
             <h2 class="section-heading"><strong>Car Listings</strong></h2>
-            <p class="mb-5">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>    
+            <p class="mb-5">Browse our wide range of available rental cars. Use the filters below to find a vehicle that suits your needs, budget, and travel plans.</p>    
           </div>
         </div>
+
         
-        <form action="{{ route('cars.listings') }}" method="GET" class="mb-5">
-          <div class="form-row">
-            <div class="form-group col-md-3">
-              <select name="car_brand" class="form-control">
-                <option value="">Any Brand</option>
-                @foreach($brands as $brand)
-                  <option value="{{ $brand }}" {{ request('car_brand') == $brand ? 'selected' : '' }}>{{ $brand }}</option>
-                @endforeach
-              </select>
-            </div>
-            <div class="form-group col-md-3">
-              <select name="transmission_type" class="form-control">
-                <option value="">Any Transmission</option>
-                @foreach($transmissions as $trans)
-                  <option value="{{ $trans }}" {{ request('transmission_type') == $trans ? 'selected' : '' }}>{{ $trans }}</option>
-                @endforeach
-              </select>
-            </div>
-            <div class="form-group col-md-2">
-              <input type="number" name="price_min" class="form-control" placeholder="Min Price">
-            </div>
-            <div class="form-group col-md-2">
-              <input type="number" name="price_max" class="form-control" placeholder="Max Price">
-            </div>
-            <div class="form-group col-md-2">
-              <button type="submit" class="btn btn-primary btn-block">Filter</button>
-            </div>
-          </div>
-        </form>
+<form action="{{ route('cars.listings') }}" method="GET" class="mb-5">
+  <div class="row">
+
+    {{-- Brand --}}
+    <div class="form-group col-md-4">
+      <label for="car_brand">Brand</label>
+      <select name="car_brand" id="car_brand" class="form-control">
+        <option value="">Any Brand</option>
+        @foreach($brands as $brand)
+          <option value="{{ $brand }}" {{ request('car_brand') == $brand ? 'selected' : '' }}>{{ $brand }}</option>
+        @endforeach
+      </select>
+    </div>
+
+    {{-- Model --}}
+    <div class="form-group col-md-4">
+      <label for="model">Model</label>
+      <select name="model" id="model" class="form-control">
+        <option value="">Any Model</option>
+        @foreach($models as $model)
+          <option value="{{ $model }}" {{ request('model') == $model ? 'selected' : '' }}>{{ $model }}</option>
+        @endforeach
+      </select>
+    </div>
+
+    {{-- Car Type --}}
+    <div class="form-group col-md-4">
+      <label for="car_type">Type</label>
+      <select name="car_type" id="car_type" class="form-control">
+        <option value="">Any Type</option>
+        @foreach($types as $type)
+          <option value="{{ $type }}" {{ request('car_type') == $type ? 'selected' : '' }}>{{ ucfirst($type) }}</option>
+        @endforeach
+      </select>
+    </div>
+  </div>
+
+  <div class="row">
+    {{-- Transmission --}}
+    <div class="form-group col-md-4">
+      <label for="transmission_type">Transmission</label>
+      <select name="transmission_type" id="transmission_type" class="form-control">
+        <option value="">Any Transmission</option>
+        @foreach($transmissions as $trans)
+          <option value="{{ $trans }}" {{ request('transmission_type') == $trans ? 'selected' : '' }}>{{ $trans }}</option>
+        @endforeach
+      </select>
+    </div>
+
+    {{-- Fuel --}}
+    <div class="form-group col-md-4">
+      <label for="fuel_type">Fuel Type</label>
+      <select name="fuel_type" id="fuel_type" class="form-control">
+        <option value="">Any Fuel</option>
+        @foreach($fuelTypes as $fuel)
+          <option value="{{ $fuel }}" {{ request('fuel_type') == $fuel ? 'selected' : '' }}>{{ $fuel }}</option>
+        @endforeach
+      </select>
+    </div>
+
+    {{-- Capacity --}}
+    <div class="form-group col-md-4">
+      <label for="passenger_capacity">Capacity</label>
+      <select name="passenger_capacity" id="passenger_capacity" class="form-control">
+        <option value="">Any Capacity</option>
+        @foreach($capacities as $capacity)
+          <option value="{{ $capacity }}" {{ request('passenger_capacity') == $capacity ? 'selected' : '' }}>{{ $capacity }} Seats</option>
+        @endforeach
+      </select>
+    </div>
+  </div>
+
+  <div class="row">
+    {{-- Price Range --}}
+    <div class="form-group col-md-4">
+      <label for="price_range">Price Range</label>
+      <select name="price_range" id="price_range" class="form-control">
+        <option value="">Any Price</option>
+        <option value="0-99" {{ request('price_range') == '0-99' ? 'selected' : '' }}>Below RM100</option>
+        <option value="100-199" {{ request('price_range') == '100-199' ? 'selected' : '' }}>RM100 - RM199</option>
+        <option value="200-299" {{ request('price_range') == '200-299' ? 'selected' : '' }}>RM200 - RM299</option>
+        <option value="300-399" {{ request('price_range') == '300-399' ? 'selected' : '' }}>RM300 - RM399</option>
+        <option value="400-99999" {{ request('price_range') == '400-99999' ? 'selected' : '' }}>RM400 and above</option>
+      </select>
+    </div>
+
+    {{-- Pickup Date --}}
+    <div class="form-group col-md-4">
+      <label for="pickup_date">Pickup Date</label>
+      <input type="text" name="pickup_date" class="form-control datepicker" placeholder="Pickup Date" value="{{ request('pickup_date') }}">
+    </div>
+
+    {{-- Dropoff Date --}}
+    <div class="form-group col-md-4">
+      <label for="dropoff_date">Dropoff Date</label>
+      <input type="text" name="dropoff_date" class="form-control datepicker" placeholder="Dropoff Date" value="{{ request('dropoff_date') }}">
+    </div>
+  </div>
+
+  <div class="row">
+    {{-- Sort Option --}}
+    <div class="form-group col-md-4">
+      <label for="sort_by">Sort By</label>
+      <select name="sort_by" class="form-control">
+        <option value="">Sort By</option>
+        <option value="price_asc" {{ request('sort_by') == 'price_asc' ? 'selected' : '' }}>Price: Low to High</option>
+        <option value="price_desc" {{ request('sort_by') == 'price_desc' ? 'selected' : '' }}>Price: High to Low</option>
+        <option value="latest" {{ request('sort_by') == 'latest' ? 'selected' : '' }}>Newest Cars</option>
+      </select>
+    </div>
+
+    {{-- Submit Button --}}
+    <div class="form-group col-md-4 align-self-end">
+      <button type="submit" class="btn btn-primary btn-block mt-2">Filter</button>
+    </div>
+  </div>
+</form>
+
+<script>
+document.getElementById('car_brand').addEventListener('change', function () {
+    const brand = this.value;
+    if (!brand) return;
+
+    fetch(`/get-car-options?brand=${brand}`)
+        .then(response => response.json())
+        .then(data => {
+            // Update Model
+            const model = document.getElementById('model');
+            model.innerHTML = '<option value="">Any Model</option>';
+            data.models.forEach(item => {
+                model.innerHTML += `<option value="${item}">${item}</option>`;
+            });
+
+            // Update Type
+            const type = document.getElementById('car_type');
+            type.innerHTML = '<option value="">Any Type</option>';
+            data.types.forEach(item => {
+                type.innerHTML += `<option value="${item}">${item}</option>`;
+            });
+
+            // Update Transmission
+            const trans = document.getElementById('transmission_type');
+            trans.innerHTML = '<option value="">Any Transmission</option>';
+            data.transmissions.forEach(item => {
+                trans.innerHTML += `<option value="${item}">${item}</option>`;
+            });
+
+            // Update Fuel
+            const fuel = document.getElementById('fuel_type');
+            fuel.innerHTML = '<option value="">Any Fuel</option>';
+            data.fuelTypes.forEach(item => {
+                fuel.innerHTML += `<option value="${item}">${item}</option>`;
+            });
+        });
+});
+</script>
+
+
 
         <div class="row">
-          @forelse($cars as $car)
+          @forelse ($cars as $car)
             <div class="col-md-6 col-lg-4 mb-4">
               <div class="listing d-block align-items-stretch">
                 <div class="listing-img h-100 mr-4">
-                  <img src="{{ asset('images/car_placeholder.jpg') }}" alt="{{ $car->model }}" class="img-fluid">
+                  <img src="{{ asset('images/car_1.jpg') }}" alt="{{ $car->model }}" class="img-fluid">
                 </div>
                 <div class="listing-contents h-100">
+                  
+                  <!-- Title -->
                   <h3>{{ $car->brand }} {{ $car->model }}</h3>
-                  <div class="rent-price">
+                  <p class="text-muted">Car ID: {{ $car->id }}</p>
+
+                  
+                  <!-- Price -->
+                  <div class="rent-price mb-3">
                     <strong>RM {{ number_format($car->price, 2) }}</strong><span class="mx-1">/</span>day
+                    <li><strong>Half-Day:</strong> RM {{ number_format($car->half_day_price,2) }}</li>
+                    <li><strong>Per Hour:</strong> RM {{ number_format($car->hourly_rate,2) }}</li>
                   </div>
-                  <div class="d-block d-md-flex mb-3 border-bottom pb-3">
-                    <div class="listing-feature pr-4">
-                      <span class="caption">Transmission:</span>
-                      <span class="number">{{ $car->transmission_type }}</span>
-                    </div>
-                    <div class="listing-feature pr-4">
-                      <span class="caption">Fuel:</span>
-                      <span class="number">{{ $car->fuel_type }}</span>
-                    </div>
-                  </div>
-                  <div>
-                    <p>This car is {{ $car->availability ? 'Available' : 'Not Available' }}</p>
-                    <p><a href="{{ route('booking', ['id' => $car->id]) }}" class="btn btn-primary btn-sm">Rent Now</a></p>
-                  </div>
+
+                  <!-- Features Grid -->
+                  <ul class="list-unstyled mb-3">
+                    <li><strong>Type:</strong> {{ ucfirst($car->car_type) }}</li>
+                    <li><strong>Transmission:</strong> {{ $car->transmission_type }}</li>
+                    <li><strong>Fuel:</strong> {{ $car->fuel_type }}</li>
+                    <li><strong>Passengers:</strong> {{ $car->passenger_capacity }}</li>
+                    <li><strong>Location:</strong> {{ $car->pickup_location }}</li>
+                    <!-- <li><strong>Available:</strong>
+                      {{ \Carbon\Carbon::parse($car->available_from)->format('M d, Y') }}
+                       – 
+                      {{ \Carbon\Carbon::parse($car->available_until)->format('M d, Y') }}
+                    </li> -->
+                    <li><strong>Status:</strong> 
+                      @if($car->availability)
+                        <span class="text-success">Available</span>
+                      @else
+                        <span class="text-danger">Not Available</span>
+                      @endif
+                    </li>
+                  </ul>
+
+                  <!-- Action -->
+                  <p>
+                    @if($car->availability)
+                      <a href="{{ route('booking', ['id' => $car->id]) }}" class="btn btn-primary btn-sm">Rent Now</a>
+                    @else
+                      <button class="btn btn-secondary btn-sm" disabled>Currently Booked</button>
+                    @endif
+                  </p>
+
                 </div>
               </div>
             </div>
@@ -128,35 +283,10 @@
             <p class="text-center">No cars found matching your filters.</p>
           @endforelse
         </div>
-
-        <div class="row">
-          <div class="col-5">
-            <div class="custom-pagination">
-              <a href="#">1</a>
-              <span>2</span>
-              <a href="#">3</a>
-              <a href="#">4</a>
-              <a href="#">5</a>
-            </div>
-          </div>
+<
+        <div class="d-flex justify-content-center mt-4">
+            {{ $cars->links('pagination::bootstrap-4') }}
         </div>
-      </div>
-    </div>
-
-    <div class="site-section bg-primary py-5">
-      <div class="container">
-        <div class="row align-items-center">
-          <div class="col-lg-7 mb-4 mb-md-0">
-            <h2 class="mb-0 text-white">What are you waiting for?</h2>
-            <p class="mb-0 opa-7">Rent A Car Now with SewaSmart!</p>
-          </div>
-          <div class="col-lg-5 text-md-right">
-            <a href={{ url('/cars') }} class="btn btn-primary btn-white">Rent a car now</a>
-          </div>
-        </div>
-      </div>
-    </div>
-
       
       <footer class="site-footer">
         <div class="container">

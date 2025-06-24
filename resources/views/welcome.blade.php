@@ -48,54 +48,48 @@
                         <h1><strong>Rent a car</strong> is within your finger tips.</h1>
                         </div>
                     </div>
-                        <form action="{{ route('cars.listings') }}" method="GET" class="trip-form">
-                            <div class="row mb-3">
-                                <div class="col-md-3">
-                                    <select name="car_brand" id="car_brand" class="custom-select form-control">
-                                        <option value="">Select Car Brand</option>
-                                        <option value="Ferrari">Ferrari</option>
-                                        <option value="Toyota">Toyota</option>
-                                        <option value="Ford">Ford</option>
-                                        <option value="Lamborghini">Lamborghini</option>
-                                        <!-- Add more options as needed -->
-                                    </select>
-                                </div>
-                                <div class="col-md-3">
-                                    <input type="text" id="pickup_date" name="pickup_date" placeholder="Pickup Date & Time"
-                                        class="form-control datepicker">
-                                </div>
-                                <div class="col-md-3">
-                                    <input type="text" id="dropoff_date" name="dropoff_date" placeholder="Dropoff Date & Time"
-                                        class="form-control datepicker">
-                                </div>
-                                <div class="col-md-3">
-                                    <input type="submit" value="Search Now" class="btn btn-primary btn-block">
-                                </div>
-                            </div>
+                    
+<form action="{{ route('cars.listings') }}" method="GET" class="trip-form">
+    <div class="row mb-3">
 
-                            <div class="row mb-3">
-                                <div class="col-md-3">
-                                    <input type="text" id="pickup_location" name="pickup_location" placeholder="Pickup Location"
-                                        class="form-control">
-                                </div>
-                                <div class="col-md-3">
-                                    <input type="number" id="price_min" name="price_min" placeholder="Min Price (RM)" class="form-control">
-                                </div>
-                                <div class="col-md-3">
-                                    <input type="number" id="price_max" name="price_max" placeholder="Max Price (RM)" class="form-control">
-                                </div>
-                                <div class="col-md-3">
-                                    <select name="transmission_type" id="transmission_type" class="custom-select form-control">
-                                        <option value="">Transmission Type</option>
-                                        <option value="Manual">Manual</option>
-                                        <option value="Automatic">Automatic</option>
-                                    </select>
-                                </div>
-                            </div>
+        {{-- Car Brand --}}
+        <div class="col-md-3">
+            <select name="car_brand" id="car_brand" class="custom-select form-control">
+                <option value="">Select Car Brand</option>
+                @foreach($brands as $brand)
+                    <option value="{{ $brand }}" {{ request('car_brand') == $brand ? 'selected' : '' }}>
+                        {{ $brand }}
+                    </option>
+                @endforeach
+            </select>
+        </div>
 
-                            <!-- Add more rows for additional filters as per your needs -->
+        {{-- Pickup Location --}}
+        <div class="col-md-3">
+            <select name="pickup_location" id="pickup_location" class="custom-select form-control">
+                <option value="">Select Location</option>
+                @foreach($pickupLocations as $location)
+                    <option value="{{ $location }}" {{ request('pickup_location') == $location ? 'selected' : '' }}>
+                        {{ $location }}
+                    </option>
+                @endforeach
+            </select>
+        </div>
 
-                        </form>
+        {{-- Pickup Date --}}
+        <div class="col-md-3">
+            <input type="text" id="pickup_date" name="pickup_date" placeholder="Pickup Date & Time"
+                class="form-control datepicker" value="{{ request('pickup_date') }}">
+        </div>
+
+        {{-- Submit Button --}}
+        <div class="col-md-3">
+            <input type="submit" value="Search Now" class="btn btn-primary btn-block">
+        </div>
+    </div>
+</form>
+
+
                     </div>
                 </div>
                 </div>
@@ -107,48 +101,49 @@
 
                 <div class="row mb-5">
                     <div class="col-lg-4 mb-4 mb-lg-0">
-                    <div class="step">
-                        <span>1</span>
-                        <div class="step-inner">
-                        <span class="number text-primary">01.</span>
-                        <h3>Select a car</h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vero, laboriosam!</p>
+                        <div class="step">
+                            <span>1</span>
+                            <div class="step-inner">
+                                <span class="number text-primary">01.</span>
+                                <h3>Select a car</h3>
+                                <p>Browse our wide selection of available vehicles and choose the one that best suits your needs and budget.</p>
+                            </div>
                         </div>
-                    </div>
                     </div>
                     <div class="col-lg-4 mb-4 mb-lg-0">
-                    <div class="step">
-                        <span>2</span>
-                        <div class="step-inner">
-                        <span class="number text-primary">02.</span>
-                        <h3>Fill up form</h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vero, laboriosam!</p>
+                        <div class="step">
+                            <span>2</span>
+                            <div class="step-inner">
+                                <span class="number text-primary">02.</span>
+                                <h3>Fill up form</h3>
+                                <p>Enter your personal details, preferred dates, and pickup information to complete the booking form.</p>
+                            </div>
                         </div>
-                    </div>
                     </div>
                     <div class="col-lg-4 mb-4 mb-lg-0">
-                    <div class="step">
-                        <span>3</span>
-                        <div class="step-inner">
-                        <span class="number text-primary">03.</span>
-                        <h3>Payment</h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vero, laboriosam!</p>
+                        <div class="step">
+                            <span>3</span>
+                            <div class="step-inner">
+                                <span class="number text-primary">03.</span>
+                                <h3>Payment</h3>
+                                <p>Securely complete your reservation by making payment online or choosing a suitable payment method.</p>
+                            </div>
                         </div>
-                    </div>
                     </div>
                 </div>
+
                 <div class="row">
                     <div class="col-lg-4 mx-auto">
-                    <a href="#" class="d-flex align-items-center play-now mx-auto">
+                    <!-- <a href="#" class="d-flex align-items-center play-now mx-auto">
                         <span class="icon">
                         <span class="icon-play"></span>
                         </span>
                         <span class="caption">Video how it works</span>
-                    </a>
+                    </a> -->
                     </div>
                 </div>
                 </div>
-            </div>
+            <!-- </div>
              <div class="site-section">
                 <div class="container">
                 <div class="row align-items-center">
@@ -347,9 +342,9 @@
 
                         </div>
                     </div>
-                    
+                     -->
 
-                    <div class="col-md-6 col-lg-4 mb-4">
+                    <!-- <div class="col-md-6 col-lg-4 mb-4">
 
                         <div class="listing d-block  align-items-stretch">
                         <div class="listing-img h-100 mr-4">
@@ -378,7 +373,7 @@
                             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quos eos at eum, voluptatem quibusdam.</p>
                             <p><a href="#" class="btn btn-primary btn-sm">Rent Now</a></p>
                             </div>
-                        </div>
+                        </div> -->
 
                         </div>
                     </div>
@@ -388,92 +383,96 @@
                 </div>
 
                 <div class="site-section">
-                <div class="container">
-                    <div class="row">
-                    <div class="col-lg-7">
-                        <h2 class="section-heading"><strong>Features</strong></h2>
-                        <p class="mb-5">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>    
-                    </div>
-                    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-7">
+                <h2 class="section-heading"><strong>Features</strong></h2>
+                <p class="mb-5">Discover the key features that make our car rental platform simple, secure, and convenient for all users.</p>    
+            </div>
+        </div>
 
-                    <div class="row">
-                    <div class="col-lg-4 mb-5">
-                        <div class="service-1 dark">
-                        <span class="service-1-icon">
-                            <span class="icon-home"></span>
-                        </span>
-                        <div class="service-1-contents">
-                            <h3>Lorem ipsum dolor</h3>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Obcaecati, laboriosam.</p>
-                            <p class="mb-0"><a href="#">Learn more</a></p>
-                        </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 mb-5">
-                        <div class="service-1 dark">
-                        <span class="service-1-icon">
-                            <span class="icon-gear"></span>
-                        </span>
-                        <div class="service-1-contents">
-                            <h3>Lorem ipsum dolor</h3>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Obcaecati, laboriosam.</p>
-                            <p class="mb-0"><a href="#">Learn more</a></p>
-                        </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 mb-5">
-                        <div class="service-1 dark">
-                        <span class="service-1-icon">
-                            <span class="icon-watch_later"></span>
-                        </span>
-                        <div class="service-1-contents">
-                            <h3>Lorem ipsum dolor</h3>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Obcaecati, laboriosam.</p>
-                            <p class="mb-0"><a href="#">Learn more</a></p>
-                        </div>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-4 mb-5">
-                        <div class="service-1 dark">
-                        <span class="service-1-icon">
-                            <span class="icon-verified_user"></span>
-                        </span>
-                        <div class="service-1-contents">
-                            <h3>Lorem ipsum dolor</h3>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Obcaecati, laboriosam.</p>
-                            <p class="mb-0"><a href="#">Learn more</a></p>
-                        </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 mb-5">
-                        <div class="service-1 dark">
-                        <span class="service-1-icon">
-                            <span class="icon-video_library"></span>
-                        </span>
-                        <div class="service-1-contents">
-                            <h3>Lorem ipsum dolor</h3>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Obcaecati, laboriosam.</p>
-                            <p class="mb-0"><a href="#">Learn more</a></p>
-                        </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 mb-5">
-                        <div class="service-1 dark">
-                        <span class="service-1-icon">
-                            <span class="icon-vpn_key"></span>
-                        </span>
-                        <div class="service-1-contents">
-                            <h3>Lorem ipsum dolor</h3>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Obcaecati, laboriosam.</p>
-                            <p class="mb-0"><a href="#">Learn more</a></p>
-                        </div>
-                        </div>
-                    </div>
-
+        <div class="row">
+            <div class="col-lg-4 mb-5">
+                <div class="service-1 dark">
+                    <span class="service-1-icon">
+                        <span class="icon-home"></span>
+                    </span>
+                    <div class="service-1-contents">
+                        <h3>Easy Booking</h3>
+                        <p>Quickly find and reserve a car that fits your travel plans with our streamlined booking process.</p>
+                        <p class="mb-0"><a href="#">Learn more</a></p>
                     </div>
                 </div>
             </div>
+
+            <div class="col-lg-4 mb-5">
+                <div class="service-1 dark">
+                    <span class="service-1-icon">
+                        <span class="icon-gear"></span>
+                    </span>
+                    <div class="service-1-contents">
+                        <h3>Customizable Options</h3>
+                        <p>Choose from a variety of vehicle types, rental durations, and extra services to suit your needs.</p>
+                        <p class="mb-0"><a href="#">Learn more</a></p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-4 mb-5">
+                <div class="service-1 dark">
+                    <span class="service-1-icon">
+                        <span class="icon-watch_later"></span>
+                    </span>
+                    <div class="service-1-contents">
+                        <h3>Real-Time Availability</h3>
+                        <p>Check which cars are available at your preferred location and time instantly through our system.</p>
+                        <p class="mb-0"><a href="#">Learn more</a></p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-4 mb-5">
+                <div class="service-1 dark">
+                    <span class="service-1-icon">
+                        <span class="icon-verified_user"></span>
+                    </span>
+                    <div class="service-1-contents">
+                        <h3>Verified Drivers</h3>
+                        <p>All drivers are verified to ensure safety, professionalism, and peace of mind for your journey.</p>
+                        <p class="mb-0"><a href="#">Learn more</a></p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-4 mb-5">
+                <div class="service-1 dark">
+                    <span class="service-1-icon">
+                        <span class="icon-video_library"></span>
+                    </span>
+                    <div class="service-1-contents">
+                        <h3>Driver & Car Profiles</h3>
+                        <p>View detailed driver and car profiles, including photos, ratings, and vehicle specifications.</p>
+                        <p class="mb-0"><a href="#">Learn more</a></p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-4 mb-5">
+                <div class="service-1 dark">
+                    <span class="service-1-icon">
+                        <span class="icon-vpn_key"></span>
+                    </span>
+                    <div class="service-1-contents">
+                        <h3>Secure Payments</h3>
+                        <p>Enjoy peace of mind with our secure and encrypted online payment options, powered by trusted gateways.</p>
+                        <p class="mb-0"><a href="#">Learn more</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
             <div class="site-section bg-primary py-5">
                 <div class="container">
                     <div class="row align-items-center">
@@ -482,7 +481,7 @@
                         <p class="mb-0 opa-7">Rent A Car Now with SewaSmart!</p>
                     </div>
                     <div class="col-lg-5 text-md-right">
-                        <a href={{ url('/listing') }} class="btn btn-primary btn-white">Rent a car now</a>
+                        <a href={{ url('/cars') }} class="btn btn-primary btn-white">Rent a car now</a>
                     </div>
                     </div>
                 </div>
